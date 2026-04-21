@@ -214,7 +214,9 @@ export default function App() {
                     placeholder="Tuliskan di sini..."
                   />
                   <div className="flex gap-6 justify-center">
-                    <button onClick={() => setLoopStep(0)} className="px-8 py-4 border border-white/10 text-[10px] uppercase tracking-widest rounded-full hover:bg-white/5 transition-all cursor-none">Kembali</button>
+                    <button onClick={() => setLoopStep(0)} className="btn-ritual">
+                      Kembali
+                    </button>
                     <button 
                       onClick={() => { fetchGuardianResponse(); transitionToStep(5); }} 
                       disabled={!feelText.trim()} 
