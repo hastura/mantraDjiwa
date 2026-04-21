@@ -1,6 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  
+  --color-gold: #C9A55A;
+  --color-cream: #EEE8DC;
+  --color-dark-bg: #050507;
+}
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+  
+  --gold-glow: rgba(201, 165, 90, 0.3);
+}
+
+body {
+  background: var(--color-dark-bg);
+  color: var(--color-cream);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global Glass Component */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.4s ease;
+}
+
+.glass-panel-active {
+  background: rgba(201, 165, 90, 0.15);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 25px rgba(201, 165, 90, 0.2);
+  transform: scale(1.02);
+}
+
+/* Consistent Button Style */
+.btn-ritual {
+  padding: 1.1rem 2.8rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  border-radius: 9999px;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ritual:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  letter-spacing: 0.4em;
+  background: rgba(201, 165, 90, 0.1);
+  box-shadow: 0 0 30px var(--gold-glow);
+}
+
+/* Primary Action Modifier */
+.btn-primary {
+  background: var(--color-gold) !important;
+  color: var(--color-dark-bg) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 20px rgba(201, 165, 90, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 0 40px rgba(201, 165, 90, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-ritual:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Layout Utilities */
+.space-vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, var(--color-dark-bg) 90%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 20000;
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(to bottom, #FFFFFF, var(--color-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
